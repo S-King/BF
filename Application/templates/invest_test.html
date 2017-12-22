@@ -1,0 +1,187 @@
+{% extends "layout_template.html" %}
+
+{% block title %}
+Practice your investment strategy
+{% endblock %}
+
+{% block headerScriptsBottom %}
+{% endblock %}
+
+{% block main %}
+
+    <div class="card card-primary">
+      <div class="card-header text-center"><b>Overall Investments</b></div>
+      <div class="card-block">
+     <table id="investmentTable" class="table table-hover" >
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th>Name</th>
+                  <th>Shares</th>
+                  <th>Average Price</th>
+                  <th>Total</th>
+                  <th>Current Price</th>
+                  <th>Current Value</th>
+                  <th/>
+                  <th/>
+                </tr>
+              </thead>
+  <tbody>
+    <tr data-toggle="collapse" id="row1" data-target=".row1">
+      <td class="align-middle">BTC</td>
+      <td class="align-middle">Bitcoin</td>
+      <td class="align-middle">0.0123</td>
+      <td class="align-middle">$5200.12</td>
+      <td class="align-middle">$200.23</td>
+      <td class="align-middle">$17500.12</td>
+      <td class="align-middle">$600.73</td>
+      <td class="align-middle">$600.73</td>
+        <td>
+          <form action="{{ url_for('invest') }}" method="POST"><button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#sell_shares">SELL</button>
+                      <input hidden=true id="num_shares" name="num_shares_" value={{ ns }}>
+                      <input hidden=true id="symbol_input" name="symbol_input" value={{ symbol }}>
+                      <input hidden=true id="price_input" name="price_input" value={{ current_price }}>
+          </form>
+          <!--<input hidden=true id="price_input_{{ symbol }}" name="price_input" value={{ current_price }}/>-->
+          <!--<input hidden=true id="full_name_{{ symbol }}" name="price_input" value={{ full_name }}/>-->
+          <!--<button class="btn btn-warning btn-sm" type="button" id=" " value={{ symbol }} onclick='update_sell_modal(this)' data-toggle="modal" data-target="#sell_shares">SELL</button>-->
+    </td>      
+    </tr>
+    <tr class="collapse row1">
+      <td colspan="9">
+        <div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title">Past 24 Hours</h3>
+        <p class="card-text">Stats for previous 24 hours here</p>
+        <a href="#" class="btn btn-primary">Detailed Analysis</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title">Past 7 Days</h3>
+        <p class="card-text">Stats for previous 7 days here</p>
+        <a href="#" class="btn btn-primary">Detailed Analysis</a>
+      </div>
+    </div>
+  </div>
+</div>
+        
+        
+      </td>
+      
+      
+      
+      <!--<td colspan="8">-->
+      <!--  <table id="" data-detail-view="">-->
+      <!--    <thead>-->
+      <!--      <tr data-toggle="collapse" id="" data-target=".subrow1">-->
+      <!--        <th width="1%"><i class="fa fa-plus"></i></th>-->
+      <!--        <th width="14%" data-field="">03 Nov 2015</th>-->
+      <!--        <th width="20%" data-field="">Lorem Ipsum</th>-->
+      <!--        <th data-field="" colspan="4">Lorem Ipsum</th>-->
+      <!--        <th width="13%" data-field="">20121123</th>-->
+      <!--      </tr>-->
+      <!--    </thead>-->
+      <!--    <tbody>-->
+      <!--      <tr class="subrow1 collapse" data-href="#">-->
+      <!--        <td width="1%">&nbsp;</td>-->
+      <!--        <td width="14%">03 Nov 2015</td>-->
+      <!--        <td width="20%">Lorem Ipsum</td>-->
+      <!--        <td width="16%">Lorem Ipsum</td>-->
+      <!--        <td width="13%">Lorem Ipsum</td>-->
+      <!--        <td width="12%">Lorem Ipsum</td>-->
+      <!--        <td width="11%">Lorem Ipsum</td>-->
+      <!--        <td width="13%">20121123</td>-->
+      <!--      </tr>-->
+      <!--    </tbody>-->
+      <!--  </table>-->
+      <!--</td>-->
+    </tr>
+  </tbody>
+</table>     
+         
+      </div>
+    </div>
+    
+       <!--Modal -->
+  <div class="modal fade" id="sell_shares" role="dialog">
+    <div class="modal-dialog">
+       <!--Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Enter the number of shares to sell</h4>
+        </div>
+        <div class="modal-body">
+          
+          <div class="panel">
+          <label for="num_shares_input">Sell </label>
+          <input type="text" pattern="[0-9]" style="width:100px;" class="form-control" onkeyup="update_sell_total()" id="num_shares_sell_input">
+          shares of <span id="modal_symbol"></span>
+          </div>
+          
+          <div class="panel">at <button id="modal_pps" value="0.0" style="width:100px; align:right;">$0.00</button> per share.</div>
+          <div class="panel panel-info" id="total_sale" value="0.0"><h3>Total: </h3></div>
+          
+        </div>
+        <div class="modal-footer">
+          <form action="{{ url_for('invest') }}" method="post">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button class="btn btn-danger" type="submit">Sell</button>
+              <input hidden=true id="num_shares_form" name="num_shares_form" value="0"/>
+              <input hidden=true id="symbol_form" name="symbol_form" value=""/>
+              <input hidden=true id="full_name_form" name="full_name_form" value=""/>
+              <input hidden=true id="pps_form" name="pps_form" value="0.0"/>
+              <input hidden=true id="total_form" name="total_form" value="0.0"/> 
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  <script>
+  function update_sell_modal(btnvalue) {
+    document.getElementById("modal_symbol").innerText = btnvalue.value;
+    document.getElementById("modal_pps").innerText = "$" + document.getElementById("price_input_" + btnvalue.value).value.replace(/\/+$/, "");
+    document.getElementById("modal_pps").value = document.getElementById("price_input_" + btnvalue.value).value;
+    document.getElementById("full_name_form").value = document.getElementById("full_name_" + btnvalue.value).value;
+  }
+  
+  function update_sell_total() {
+    //alert(Math.round((parseFloat(document.getElementById("modal_pps").value) * parseFloat(document.getElementById("modal_pps").value))*100)/100);
+    var total = Math.round((parseFloat(document.getElementById("modal_pps").value) * parseFloat(document.getElementById("num_shares_sell_input").value))*100)/100;
+    //alert(total);
+    //alert(accounting.formatMoney(12345678).value); // $12,345,678.00
+    document.getElementById("total_sale").innerHTML = "<h3>Total: $" + total + "</h3>";
+    document.getElementById("total_sale").value = total;
+    
+    document.getElementById("num_shares_form").value = parseFloat(document.getElementById("num_shares_sell_input").value);
+    document.getElementById("symbol_form").value = document.getElementById("modal_symbol").innerText;
+    document.getElementById("pps_form").value = document.getElementById("modal_pps").value.replace(/\/+$/, "");
+    document.getElementById("total_form").value = total;
+  }
+  </script>
+  
+  <script src="static/js/accounting.js"></script>
+    
+
+{% endblock %}
+
+
+
+{% block footerScriptsBottom %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js" type="text/javascript"></script>
+
+<script>
+
+</script>
+
+{% endblock %}
+

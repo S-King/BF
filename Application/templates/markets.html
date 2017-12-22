@@ -1,0 +1,112 @@
+{% extends "layout_template.html" %}
+
+{% block headerScriptsBottom %}
+
+{% endblock %}
+
+
+{% block title %}
+Blockfund - The only cryptocurrency resource
+{% endblock %}
+
+{% block main %}
+            <div class="row">
+                <div class="col-lg-10">
+                    
+                        <h1 id="title" class="hidden-xs"><a href="/">Cryptocurrency Market Capitalizations</a></h1>
+                        
+
+
+    <div class="row">
+        <div class="col-xs-12">     
+            <div class="table-fixed-column-mobile compact-name-column">
+                <table class="table" id="currencies" >
+                <thead>
+                    <tr>
+                        <th class="col-rank text-center">#</th>
+                        <th id="th-name" class="sortable">Name</th>
+                        
+                        <th id="th-marketcap" class="sortable text-right" data-mobile-text="M. Cap">Market Cap</th>
+                        <th id="th-price" class="sortable text-right">Price</th>
+                        <th id="th-volume" class="sortable text-right" data-mobile-text="Volume">Volume (24h)</th>
+                        <th id="th-totalsupply" class="sortable text-right" title="The number of coins in existence available to the public" data-mobile-text="Supply">Circulating Supply</th>
+                        <th id="th-change" class="sortable text-right" data-mobile-text="Change">Change (24h)</th>
+                        <th id="th-marketcap-graph">Price Graph (7d)</th>
+                    </tr>
+                </thead>
+                <tbody>
+               {% for rownum, symbol, marketcap, price, volume24hr, supply, percentchange24hr, date in marketcaps %} 
+                <tr id="id-{{ symbol }}"  class="">
+                    <td class="text-center">
+                        {{ rownum }}
+                    </td>
+                    <td class="no-wrap currency-name">
+                        <div class="s-s-{{ symbol }} currency-logo-sprite"></div>
+                        <span class="currency-symbol"><a href="/currencies/{{ symbol }}/">{{ symbol }}</a></span>
+                        <!--<a class="currency-name-container" href="/currencies/{{ symbol }}/">Bitcoin</a>-->
+                    </td>
+                    <td class="no-wrap market-cap text-right">
+                        {{ "${:,.0f}".format(marketcap) }}
+                        
+                    </td>
+                    <td class="no-wrap text-right">
+                        <a href="/currencies/{{ symbol }}/#markets" class="price">{{ "${:,.2f}".format(price)  }}</a>
+                    </td>
+                    <td class="no-wrap text-right">
+                        <a href="/currencies/{{ symbol }}/#markets" class="volume" >{{ "{:,.2f}".format(volume24hr)  }}</a>
+                    </td>
+                    <td class="no-wrap text-right circulating-supply">
+                        <a href="http://blockchain.info" target="_blank">
+                            <span data-supply-container>
+                            
+                                {{ "{:,.0f}".format(supply)  }}
+                            
+                            </span>
+                             <span class="hidden-xs">{{ symbol }}</span> 
+                            </a>
+                    </td>
+                    <td class="no-wrap percent-24h  positive_change  text-right" 
+                    {% if (percentchange24hr < 0)  %}
+                    style="color:red"
+                    {% else %}
+                    style="color:green"
+                    {% endif %}
+                                                                >{{ "{:,.2f} %".format(percentchange24hr)  }}</td>
+                    <td>
+                        <!--<a href="/currencies/{{ symbol }}/#charts"><img class="sparkline" alt="sparkline" src="https://files.coinmarketcap.com/generated/sparklines/1.png"></a>-->
+                        </td>
+                </tr>
+                {% endfor %}
+                
+  
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+        
+        
+        
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+{% endblock %}
+
+{% block footerScriptsBottom %}
+
+{% endblock %}

@@ -1,0 +1,43 @@
+HTTrack3.49-2+htsswf+htsjava launched on Wed, 01 Nov 2017 22:43:28 at http://pages.revox.io/dashboard/3.0.0/html/condensed/index.html#usa +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qYC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" -Y http://pages.revox.io/dashboard/3.0.0/html/condensed/index.html#usa -O1 "C:\Users\Toortik\Documents\Trippin\Bitcoin" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+22:44:21	Error: 	"Unable to get server's address: unknown error" (-5) after 2 retries at link primary/robots.txt (from primary/primary)
+22:44:21	Warning: 	Retry after error -5 (Unable to get server's address: No such host is known. ) at link primary/usa (from primary/primary)
+22:49:25	Warning: 	Moved Permanently for changelog.pages.revox.io/robots.txt
+22:49:25	Warning: 	Redirected link is identical because of 'URL Hack' option: changelog.pages.revox.io/robots.txt and https://changelog.pages.revox.io/robots.txt
+22:49:25	Warning: 	Warning moved treated for changelog.pages.revox.io/robots.txt (real one is https://changelog.pages.revox.io/robots.txt)
+22:49:25	Warning: 	Moved Permanently for changelog.pages.revox.io/
+22:49:25	Warning: 	Redirected link is identical because of 'URL Hack' option: changelog.pages.revox.io/ and https://changelog.pages.revox.io/
+22:49:25	Warning: 	File has moved from changelog.pages.revox.io/ to https://changelog.pages.revox.io/
+22:49:28	Warning: 	Retry after error -5 (Unable to get server's address: unknown error) at link primary/usa (from primary/primary)
+22:49:30	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/pages/css/.../img/icons/sort_desc_disabled.png (from pages.revox.io/dashboard/3.0.0/html/condensed/pages/css/pages.css)
+22:49:32	Warning: 	Retry after error -4 (Incorrect length (460137 Bytes, 571150 expected)) at link pages.revox.io/dashboard/3.0.0/html/condensed/assets/img/social/cover.jpg (from pages.revox.io/dashboard/3.0.0/html/condensed/social.html)
+22:49:50	Warning: 	Retry after error -4 (Incorrect length (657719 Bytes, 760813 expected)) at link pages.revox.io/dashboard/3.0.0/html/condensed/assets/img/demo/new-york-city-buildings-sunrise-morning-hd-wallpaper.jpg (from pages.revox.io/dashboard/3.0.0/html/condensed/login.html)
+22:49:50	Warning: 	Retry after error -4 (Incorrect length (526132 Bytes, 626810 expected)) at link pages.revox.io/dashboard/3.0.0/html/condensed/assets/img/gallery/2_2.jpg (from pages.revox.io/dashboard/3.0.0/html/condensed/gallery.html)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/You must include the utils.js file before tether.js (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/tether/js/tether.min.js)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/images/grey-plus.png (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/nvd3/nv.d3.min.js)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/images/grey-minus.png (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/nvd3/nv.d3.min.js)
+22:49:50	Error: 	"Unable to get server's address: unknown error" (-5) after 2 retries at link primary/usa (from primary/primary)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/AppleWebKit/ (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.all.min.js)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/Chrome/ (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.all.min.js)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/Opera/ (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.all.min.js)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/hpwos/ (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.all.min.js)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/~ (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.all.min.js)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/lower (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/js/slider.js)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/upper (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/js/slider.js)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/component-emitter/index.js (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/dropzone/dropzone.min.js)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/dropzone/index.js (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/dropzone/dropzone.min.js)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/lib/dropzone.js (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/dropzone/dropzone.min.js)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/dropzone/lib/dropzone.js (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/dropzone/dropzone.min.js)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/dropzone/deps/emitter/index.js (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/dropzone/dropzone.min.js)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/emitter/index.js (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/dropzone/dropzone.min.js)
+22:49:50	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/typeahead.js (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/bootstrap-typehead/typeahead.bundle.min.js)
+22:49:56	Error: 	"Not Found" (404) at link pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/owl-carousel/assets/owl.video.play.png (from pages.revox.io/dashboard/3.0.0/html/condensed/assets/plugins/owl-carousel/assets/owl.carousel.css)
+
+HTTrack Website Copier/3.49-2 mirror complete in 6 minutes 29 seconds : 410 links scanned, 381 files written (14669204 bytes overall) [9191384 bytes received at 23628 bytes/sec], 7208080 bytes transferred using HTTP compression in 265 files, ratio 21%, 13.5 requests per connection
+(21 errors, 11 warnings, 0 messages)

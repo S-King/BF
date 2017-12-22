@@ -1,0 +1,14 @@
+// Useful commands
+
+// Check if a flask server is already running
+ps aux | grep flask
+// If you see something like this a server is already running:
+// ubuntu     48035  0.0  0.0 176468 30952 pts/5    S+   Nov04   0:00 /usr/bin/python3 /usr/local/bin/flask run --host=0.0.0.0 --port=8080 --with-threads
+
+
+Can you see this?
+
+cd to here (Py3_env)s_king:~/workspace/Blockfund_test/Application $ 
+cd ~/workspace/Blockfund_test/Application
+
+flask run 

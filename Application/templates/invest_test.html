@@ -9,7 +9,20 @@ Practice your investment strategy
 
 {% block main %}
 
-    <div class="card card-primary">
+
+<div class="card">
+
+  <div class="card-body">
+    SEARCH BAR
+  </div>
+    <div class="card-footer">
+    <div class="pg pg-arrow_up"></div>
+  </div>
+  
+</div>
+
+
+    <div class="card card-primary" id="OverallInvestments">
       <div class="card-header text-center"><b>Overall Investments</b></div>
       <div class="card-block">
      <table id="investmentTable" class="table table-hover" >
@@ -106,6 +119,109 @@ Practice your investment strategy
          
       </div>
     </div>
+    
+    <div class="card card-success" id="Watchlist">
+      <div class="card-header text-center"><b>Watchlist</b></div>
+      <div class="card-block">
+     <table id="investmentTable" class="table table-hover" >
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th>Name</th>
+                  <th>Shares</th>
+                  <th>Average Price</th>
+                  <th>Total</th>
+                  <th>Current Price</th>
+                  <th>Current Value</th>
+                  <th/>
+                  <th/>
+                </tr>
+              </thead>
+  <tbody>
+    <tr>
+      <!--Can I remove all these data toggles and instead just data toggle the buttons to a null function?-->
+      <td class="align-middle" data-toggle="collapse" id="row2" data-target=".row2">BTC</td>
+      <td class="align-middle" data-toggle="collapse" id="row2" data-target=".row2">Bitcoin</td>
+      <td class="align-middle" data-toggle="collapse" id="row2" data-target=".row2">0.0123</td>
+      <td class="align-middle" data-toggle="collapse" id="row2" data-target=".row2">$5200.12</td>
+      <td class="align-middle" data-toggle="collapse" id="row2" data-target=".row2">$200.23</td>
+      <td class="align-middle" data-toggle="collapse" id="row2" data-target=".row2">$17500.12</td>
+      <td class="align-middle" data-toggle="collapse" id="row2" data-target=".row2">$600.73</td>
+      <td class="align-middle" data-toggle="collapse" id="row2" data-target=".row2">$600.73</td>
+        <td>
+          
+          <form action="{{ url_for('invest') }}" method="POST">
+            <button class="btn btn-Success btn-sm" type="button" name="BuyBtn" data-toggle="modal" data-target="#buy_shares">BUY</button>
+            <button class="btn btn-primary btn-sm" type="button" name="SellBtn" data-toggle="modal" data-target="#sell_shares">SELL</button>
+                      <input hidden=true id="num_shares" name="num_shares_" value={{ ns }}>
+                      <input hidden=true id="symbol_input" name="symbol_input" value={{ symbol }}>
+                      <input hidden=true id="price_input" name="price_input" value={{ current_price }}>
+          </form>
+          <!--<input hidden=true id="price_input_{{ symbol }}" name="price_input" value={{ current_price }}/>-->
+          <!--<input hidden=true id="full_name_{{ symbol }}" name="price_input" value={{ full_name }}/>-->
+          <!--<button class="btn btn-warning btn-sm" type="button" id=" " value={{ symbol }} onclick='update_sell_modal(this)' data-toggle="modal" data-target="#sell_shares">SELL</button>-->
+    </td>      
+    </tr>
+    <tr class="collapse row2">
+      <td colspan="9">
+        <div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title">Past 24 Hours</h3>
+        <p class="card-text">Stats for previous 24 hours here</p>
+        <a href="#" class="btn btn-primary">Detailed Analysis</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title">Past 7 Days</h3>
+        <p class="card-text">Stats for previous 7 days here</p>
+        <a href="#" class="btn btn-primary">Detailed Analysis</a>
+      </div>
+    </div>
+  </div>
+</div>
+        
+        
+      </td>
+      
+      
+      
+      <!--<td colspan="8">-->
+      <!--  <table id="" data-detail-view="">-->
+      <!--    <thead>-->
+      <!--      <tr data-toggle="collapse" id="" data-target=".subrow1">-->
+      <!--        <th width="1%"><i class="fa fa-plus"></i></th>-->
+      <!--        <th width="14%" data-field="">03 Nov 2015</th>-->
+      <!--        <th width="20%" data-field="">Lorem Ipsum</th>-->
+      <!--        <th data-field="" colspan="4">Lorem Ipsum</th>-->
+      <!--        <th width="13%" data-field="">20121123</th>-->
+      <!--      </tr>-->
+      <!--    </thead>-->
+      <!--    <tbody>-->
+      <!--      <tr class="subrow1 collapse" data-href="#">-->
+      <!--        <td width="1%">&nbsp;</td>-->
+      <!--        <td width="14%">03 Nov 2015</td>-->
+      <!--        <td width="20%">Lorem Ipsum</td>-->
+      <!--        <td width="16%">Lorem Ipsum</td>-->
+      <!--        <td width="13%">Lorem Ipsum</td>-->
+      <!--        <td width="12%">Lorem Ipsum</td>-->
+      <!--        <td width="11%">Lorem Ipsum</td>-->
+      <!--        <td width="13%">20121123</td>-->
+      <!--      </tr>-->
+      <!--    </tbody>-->
+      <!--  </table>-->
+      <!--</td>-->
+    </tr>
+  </tbody>
+</table>     
+         
+      </div>
+    </div>    
+    
     
        <!--Modal -->
   <div class="modal fade" id="sell_shares" role="dialog">

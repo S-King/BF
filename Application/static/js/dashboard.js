@@ -56,8 +56,8 @@
             if (target == 'fb') { hash = '#usa'; } else if (target == 'sa') { hash = '#af'; } else if (target == 'js') { hash = '#ru'; }
             window.location.hash = hash;
         });
-        $(".widget-3 .metro").liveTile();
-        $(".widget-7 .metro").liveTile();
+        // $(".widget-3 .metro").liveTile();
+        // $(".widget-7 .metro").liveTile();
         
 //////////////////// TESTING ////////////////////  # Added in my test json file being generated from crypto_helpers.py
         d3.json('/static/json/chart_test.json', function(data) {
@@ -91,36 +91,36 @@
                     d3.select('.widget-4-chart svg').datum(data.nvd3.productRevenue).transition().duration(500).call(chart);
                     nv.utils.windowResize(function() { chart.update(); });
                     $('.widget-4-chart').data('chart', chart); return chart; }, function() {}); })();
-            (function() {
-                var container = '.widget-15-chart';
-                var seriesData = [
-                    [],
-                    []
-                ];
-                var random = new Rickshaw.Fixtures.RandomData(40);
-                for (var i = 0; i < 40; i++) { random.addData(seriesData); }
-                var graph = new Rickshaw.Graph({ renderer: 'bar', element: document.querySelector(container), height: 200, padding: { top: 0.5 }, series: [{ data: seriesData[0], color: $.Pages.getColor('complete-light'), name: "New users" }, { data: seriesData[1], color: $.Pages.getColor('master-lighter'), name: "Returning users" }] });
-                var hoverDetail = new Rickshaw.Graph.HoverDetail({ graph: graph, formatter: function(series, x, y) { var date = '<span class="date">' + new Date(x * 1000).toUTCString() + '</span>'; var swatch = '<span class="detail_swatch" style="background-color: ' + series.color + '"></span>'; var content = swatch + series.name + ": " + parseInt(y) + '<br>' + date; return content; } });
-                graph.render();
-                $(window).resize(function() { graph.configure({ width: $(container).width(), height: 200 });
-                    graph.render() });
-                $(container).data('chart', graph);
-            })();
-            (function() {
-                var container = '.widget-15-chart2';
-                var seriesData = [
-                    [],
-                    []
-                ];
-                var random = new Rickshaw.Fixtures.RandomData(40);
-                for (var i = 0; i < 40; i++) { random.addData(seriesData); }
-                var graph = new Rickshaw.Graph({ renderer: 'bar', element: document.querySelector(container), padding: { top: 0.5 }, series: [{ data: seriesData[0], color: $.Pages.getColor('complete-light'), name: "New users" }, { data: seriesData[1], color: $.Pages.getColor('master-lighter'), name: "Returning users" }] });
-                var hoverDetail = new Rickshaw.Graph.HoverDetail({ graph: graph, formatter: function(series, x, y) { var date = '<span class="date">' + new Date(x * 1000).toUTCString() + '</span>'; var swatch = '<span class="detail_swatch" style="background-color: ' + series.color + '"></span>'; var content = swatch + series.name + ": " + parseInt(y) + '<br>' + date; return content; } });
-                graph.render();
-                $(window).resize(function() { graph.configure({ width: $(container).width(), height: 200 });
-                    graph.render() });
-                $(container).data('chart', graph);
-            })();
+            // (function() {
+            //     var container = '.widget-15-chart';
+            //     var seriesData = [
+            //         [],
+            //         []
+            //     ];
+            //     var random = new Rickshaw.Fixtures.RandomData(40);
+            //     for (var i = 0; i < 40; i++) { random.addData(seriesData); }
+            //     var graph = new Rickshaw.Graph({ renderer: 'bar', element: document.querySelector(container), height: 200, padding: { top: 0.5 }, series: [{ data: seriesData[0], color: $.Pages.getColor('complete-light'), name: "New users" }, { data: seriesData[1], color: $.Pages.getColor('master-lighter'), name: "Returning users" }] });
+            //     var hoverDetail = new Rickshaw.Graph.HoverDetail({ graph: graph, formatter: function(series, x, y) { var date = '<span class="date">' + new Date(x * 1000).toUTCString() + '</span>'; var swatch = '<span class="detail_swatch" style="background-color: ' + series.color + '"></span>'; var content = swatch + series.name + ": " + parseInt(y) + '<br>' + date; return content; } });
+            //     graph.render();
+            //     $(window).resize(function() { graph.configure({ width: $(container).width(), height: 200 });
+            //         graph.render() });
+            //     $(container).data('chart', graph);
+            // })();
+            // (function() {
+            //     var container = '.widget-15-chart2';
+            //     var seriesData = [
+            //         [],
+            //         []
+            //     ];
+            //     var random = new Rickshaw.Fixtures.RandomData(40);
+            //     for (var i = 0; i < 40; i++) { random.addData(seriesData); }
+            //     var graph = new Rickshaw.Graph({ renderer: 'bar', element: document.querySelector(container), padding: { top: 0.5 }, series: [{ data: seriesData[0], color: $.Pages.getColor('complete-light'), name: "New users" }, { data: seriesData[1], color: $.Pages.getColor('master-lighter'), name: "Returning users" }] });
+            //     var hoverDetail = new Rickshaw.Graph.HoverDetail({ graph: graph, formatter: function(series, x, y) { var date = '<span class="date">' + new Date(x * 1000).toUTCString() + '</span>'; var swatch = '<span class="detail_swatch" style="background-color: ' + series.color + '"></span>'; var content = swatch + series.name + ": " + parseInt(y) + '<br>' + date; return content; } });
+            //     graph.render();
+            //     $(window).resize(function() { graph.configure({ width: $(container).width(), height: 200 });
+            //         graph.render() });
+            //     $(container).data('chart', graph);
+            // })();
             (function() {
                 var container = '.widget-5-chart';
                 var seriesData = [

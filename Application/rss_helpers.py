@@ -4,13 +4,14 @@ import datetime
 import MySQLdb
 
 def syncNews():
-    rss_feeds = ["http://cryptosource.org/feed/"]
+    rss_feeds = ["https://cryptocurrencynews.com/feed/", "https://www.tradingview.com/feed/?stream=bitcoin"]
     with open('./NewsFeed.csv', 'w', newline='\n') as csvfile:
         writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
         for feed in rss_feeds:
             full_feed = feedparser.parse(feed)
             for article in full_feed.entries:
-                data = [0, str(article['title']), str(article['link']), datetime.datetime.strptime(article['published'], "%a, %d %b %Y %H:%M:%S +0000"), datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")]
+                # print(article)
+                data = [0, str(article['title']), str(article['link']), datetime.datetime.strptime(article['published'], "%a, %d %b %Y %H:%M:%S %z"), datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")]
                 writer.writerow(data)  
 
 
@@ -30,10 +31,10 @@ def syncNews():
             cursor.execute(loadTableSQL)    # Getting warnings here but the uploads look ok
             cursor.execute("COMMIT;")
         except Exception as e:
-            print("Error loading marketcaps: {}".format(e))
+            print("Error loading news: {}".format(e))
     print("NewsFeed loaded")
 
 
 
     
-syncNews()
+# syncNews()

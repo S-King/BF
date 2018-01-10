@@ -90,7 +90,7 @@ def index():
     # loadDashboardChartsJson()
     cursor = get_db().cursor()
     # cursor.execute("Select * from btcusd_instantprices order by date desc limit 1;")
-    cursor.execute("SELECT (@row_number:=(@row_number + 1)%2) AS newsbucket, PK FROM NewsFeed,(SELECT @row_number:=0) AS t limit 20;") # divide news articles into two bucket, limit 10 articles for each widget
+    cursor.execute("SELECT (@row_number:=(@row_number + 1)%2) AS newsbucket, Title, CAST(Published AS DATE), URL FROM NewsFeed,(SELECT @row_number:=0) AS t limit 20;") # divide news articles into two bucket, limit 10 articles for each widget
     news = list(cursor.fetchall())
 
     # btc_price = results[0][2]
@@ -143,7 +143,7 @@ def login():
     # if user reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
         print("HERE")
-
+        return redirect(url_for("index"))
         # ensure username was submitted
         if not request.form.get("username"):
             return apology("must provide username")
@@ -243,21 +243,44 @@ def charts():
     return render_template('charts.html')
 
 
+@app.route("/analyzer", methods=["GET"])
+#@login_required
+def analyzer():
+    cursor = get_db().cursor()
+    cursor.execute("SELECT symbol from marketcaps;")
+    results = cursor.fetchall()
+    typeahead_currency = [list(tupleresult)[0]   for tupleresult in results]       
+
+    return render_template('analyzer2.html',
+    currencynames_list = typeahead_currency
+    )
+
+
 
 #***************************************************************************
 #                              SCHEDULED JOBS                              *
 #***************************************************************************
-scheduler = BackgroundScheduler()
+job_defaults = {
+    'coalesce': False,
+    'max_instances': 3
+}
+scheduler = BackgroundScheduler(job_defaults=job_defaults)
 scheduler.start()
-scheduler.add_job(          
-    func=lambda: syncInstantPrices(['BTC'], ['USD']),      # Must use lambda to pass function referencewith parameters otherwise function fires on app start
-    trigger='cron',
-    year='*', month='*', day="*", week='*', day_of_week='*', hour='*', minute="*", second="*/30");
+# scheduler.add_job(          
+#     func=lambda: syncInstantPrices(['BTC'], ['USD']),      # Must use lambda to pass function referencewith parameters otherwise function fires on app start
+#     trigger='cron',
+#     year='*', month='*', day="*", week='*', day_of_week='*', hour='*', minute="*", second="*/30");
     
 scheduler.add_job(          
     func=lambda: syncMarkets(),      # Must use lambda to pass function referencewith parameters otherwise function fires on app start
     trigger='cron',
     year='*', month='*', day="*", week='*', day_of_week='*', hour='*', minute="32", second="5");    
+  
+scheduler.add_job(          
+    func=lambda: syncNews(),      # Update news articles shown
+    trigger='cron',
+    year='*', month='*', day="*", week='*', day_of_week='*', hour='*', minute="15", second="5");   
+  
     
 # Shut down the scheduler when exiting the app
 atexit.register(lambda: scheduler.shutdown())

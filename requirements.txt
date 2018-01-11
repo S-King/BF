@@ -1,0 +1,9 @@
+apscheduler==3.5.0
+coinmarketcap==4.1.1
+cryptocompare==0.3
+feedparser==5.2.1
+Flask==0.12.2
+flask_session==0.3.1
+passlib==1.7.1
+pymarketcap==3.3.145
+Werkzeug==0.14.1

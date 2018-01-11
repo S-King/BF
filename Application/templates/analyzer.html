@@ -1,0 +1,505 @@
+{% extends "layout_template.html" %}
+
+{% block headerScriptsBottom %}
+
+<style>
+    #gauge1-txt {
+    font-weight: bold;
+    font-size:80%;
+
+    text-align: center;
+}
+
+#gauge_rating {
+  width: 100%;
+  height: 100%;
+}
+    .analyzer-input {
+        position:absolute; 
+        bottom:20%; 
+        width:75%; 
+        right:5%
+    }
+    
+    
+    /*TYPE*/
+    /***
+	TYPEAHEAD for MDB
+	by djibe
+***/
+
+.typeahead {
+    z-index: 1051;
+}
+
+
+/*If using icon span before input, like <i class="fa fa-asterisk prefix"></i>*/
+
+span.twitter-typeahead {
+    width: calc(100% - 3rem);
+    margin-left: 3rem;
+}
+
+
+/* Aspect of the dropdown of results*/
+
+.typeahead.dropdown-menu,
+span.twitter-typeahead .tt-menu {
+    min-width: 100%;
+	background: white;
+    /*as large as input*/
+    border: none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+    border-radius: 0;
+    font-size: 1.2rem;
+}
+
+
+/*Aspect of results, done*/
+
+span.twitter-typeahead .tt-suggestion {
+    color: #4285F4;
+    cursor: pointer;
+    padding: 1rem;
+    text-transform: capitalize;
+    font-weight: 400;
+}
+
+
+/*Hover a result, done*/
+
+span.twitter-typeahead .active.tt-suggestion,
+span.twitter-typeahead .tt-suggestion.tt-cursor,
+span.twitter-typeahead .active.tt-suggestion:focus,
+span.twitter-typeahead .tt-suggestion.tt-cursor:focus,
+span.twitter-typeahead .active.tt-suggestion:hover,
+span.twitter-typeahead .tt-suggestion.tt-cursor:hover {
+    background-color: #EEEEEE;
+    color: #4285F4;
+}
+
+label.active {
+    color: #4285F4 !important;
+}
+
+/*END TYPE*/
+    
+</style>
+
+
+{% endblock %}
+
+
+{% block title %}
+Blockfund - The only cryptocurrency resource
+{% endblock %}
+
+{% block main %}
+
+
+
+
+<div class="row" style="height:200px">
+    <div class="col-md-8" style="background: url(/static/img/trendinglines_backgroundthin.png)">
+        <div style="position:absolute; top:5px; left:20px"><h2 style="color:white; font-weight: bold;">Crypto Analyzer</h2></div>
+        
+<!--        <div class="input-group center-margin analyzer-input" >-->
+<!--<input type="text" class="form-control" placeholder="Analyze a coin or token!" id="icon-filter" name="icon-filter" style="border:0">-->
+<!--<span class="input-group-addon ">-->
+<!--<i class="pg-search"></i>-->
+<!--</span>-->
+<!--</div>-->
+
+
+                <div class="md-form mt-4 analyzer-input" id="the-basics">
+                    <input type="text" class="form-control typeahead" id="medicament" placeholder="Analyze a coin or token!">
+                </div>
+
+
+
+
+
+    </div>
+    <div class="col-md-4 hidden-sm-down" style="background: rgba(0,0,0,.5)">
+<div class="p-l-10 p-t-10" style="color:white">Top Searches
+</div>
+<div class="p-l-25 p-r-25 p-b-10">
+<div class="pull-left">
+<h2 class="text-success no-margin">Most Popular: BTC</h2>
+</div>
+
+<h3 class="pull-right semi-bold"><sup>
+<small class="semi-bold">$</small>
+</sup>14,993.12
+</h3>
+<div class="clearfix"></div>
+</div>
+
+<div style="position:absolute; bottom:0; left:0;">
+    <img src="static/img/crypto_logos/bitcoin_logo.png" class="p-l-15 p-b-15" style="height:80px"/>
+</div>
+
+</div>
+
+
+    </div>   
+    
+    
+    <style>
+    .rating {
+        margin-left: 30px;
+    }
+
+    div.skill {
+        background: #5cb85c;
+        border-radius: 3px;
+        color: white;
+        font-weight: bold;
+        padding: 3px 4px;
+        width: 100px;
+    }
+
+    .skillLine {
+        display: inline-block;
+        width: 100%;
+        min-height: 90px;
+        padding: 3px 4px;
+    }
+
+    skillLineDefault {
+        padding: 3px 4px;
+    }
+</style>
+
+    <style>
+    .wrapper {
+        position:absolute;
+/* Internet Explorer 10 */
+display:-ms-flexbox;
+-ms-flex-pack:center;
+-ms-flex-align:center;
+
+/* Firefox */
+display:-moz-box;
+-moz-box-pack:center;
+-moz-box-align:center;
+
+/* Safari, Opera, and Chrome */
+display:-webkit-box;
+-webkit-box-pack:center;
+-webkit-box-align:center;
+
+/* W3C */
+display:box;
+box-pack:center;
+box-align:center;
+}
+
+
+.rating_card {
+    margin:0;
+}
+.rating_card_heading {
+    min-height:100px;
+}
+</style>
+
+    
+    <div class="row">
+    <div class="col-lg-2">
+        <div class="card card-default rating_card" >
+            <div class="card-heading rating_card_heading">
+                <h4 class="text-center">Technology Overview<span class="glyphicon glyphicon-saved pull-right"></span></h4>
+            </div>
+            <!--<div class="card-body text-center">-->
+            <!--    <p class="lead">-->
+            <!--        <small class="text-muted">Some other description</small>-->
+            <!--    </p>-->
+            <!--</div>-->
+            <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">Speed</div>
+                        <span class="rating" id="rate1" style="vertical-align:middle;font-weight: bold;">90%</span>
+                    </div>
+                </li>
+                <li class="list-group-item text-center">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">Volume</div>
+                        <span class="rating" id="rate2" style="vertical-align:middle;font-weight: bold;">50%</span>
+                    </div>
+                </li>
+                <li class="list-group-item text-center">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">Security</div>
+                        <span class="rating" id="rate3" style="vertical-align:middle;font-weight: bold;">61%</span>
+                    </div>
+                </li>
+                <li class="list-group-item text-center">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">Support</div>
+                        <span class="rating" id="rate4" style="vertical-align:middle;font-weight: bold;">71%</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="card-footer text-center">
+                Overall: 68%
+            </div>
+        </div>
+    </div>       
+        
+    <div class="col-lg-2">
+        <div class="card card-default rating_card">
+            <div class="card-heading rating_card_heading">
+                <h4 class="text-center">Development Overview<span class="glyphicon glyphicon-saved pull-right"></span></h4>
+            </div>
+            <!--<div class="card-body text-center">-->
+            <!--    <p class="lead">-->
+            <!--        <small class="text-muted">Some other description</small>-->
+            <!--    </p>-->
+            <!--</div>-->
+            <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">Team</div>
+                        <span class="rating" id="rate1" style="vertical-align:middle;font-weight: bold;">90%</span>
+                    </div>
+                </li>
+                <li class="list-group-item text-center">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">Progress</div>
+                        <span class="rating" id="rate2" style="vertical-align:middle;font-weight: bold;">50%</span>
+                    </div>
+                </li>
+                <li class="list-group-item text-center">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">Transparency</div>
+                        <span class="rating" id="rate3" style="vertical-align:middle;font-weight: bold;">61%</span>
+                    </div>
+                </li>
+                <li class="list-group-item text-center">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">Planning</div>
+                        <span class="rating" id="rate4" style="vertical-align:middle;font-weight: bold;">71%</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="card-footer text-center">
+                Overall: 73%
+            </div>
+        </div>
+    </div>     
+
+    <div class="col-lg-2">
+        <div class="card card-default rating_card">
+            <div class="card-heading rating_card_heading">
+                <h4 class="text-center">Market Strength<span class="glyphicon glyphicon-saved pull-right"></span></h4>
+            </div>
+            <!--<div class="card-body text-center">-->
+            <!--    <p class="lead">-->
+            <!--        <small class="text-muted">Some other description</small>-->
+            <!--    </p>-->
+            <!--</div>-->
+            <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">Coverage</div>
+                        <span class="rating" id="rate1" style="vertical-align:middle;font-weight: bold;">90%</span>
+                    </div>
+                </li>
+                <li class="list-group-item text-center">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">Availability</div>
+                        <span class="rating" id="rate2" style="vertical-align:middle;font-weight: bold;">50%</span>
+                    </div>
+                </li>
+                <li class="list-group-item text-center">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">Exchanges</div>
+                        <span class="rating" id="rate3" style="vertical-align:middle;font-weight: bold;">61%</span>
+                    </div>
+                </li>
+                <li class="list-group-item text-center">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">Ease</div>
+                        <span class="rating" id="rate4" style="vertical-align:middle;font-weight: bold;">71%</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="card-footer text-center">
+                Overall: 35%
+            </div>
+        </div>
+    </div>       
+
+    <div class="col-lg-2">
+        <div class="card card-default rating_card">
+            <div class="card-heading rating_card_heading">
+                <h4 class="text-center">Sentiment<span class="glyphicon glyphicon-saved pull-right"></span></h4>
+            </div>
+            <!--<div class="card-body text-center">-->
+            <!--    <p class="lead">-->
+            <!--        <small class="text-muted">Some other description</small>-->
+            <!--    </p>-->
+            <!--</div>-->
+            <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">Social</div>
+                        <span class="rating" id="rate1" style="vertical-align:middle;font-weight: bold;">90%</span>
+                    </div>
+                </li>
+                <li class="list-group-item text-center">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">News</div>
+                        <span class="rating" id="rate2" style="vertical-align:middle;font-weight: bold;">50%</span>
+                    </div>
+                </li>
+                <li class="list-group-item text-center">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">Media</div>
+                        <span class="rating" id="rate3" style="vertical-align:middle;font-weight: bold;">61%</span>
+                    </div>
+                </li>
+                <li class="list-group-item text-center">
+                    <div class="skillLineDefault" style="width:100%">
+                        <div class="skill pull-left text-center">Politics</div>
+                        <span class="rating" id="rate4" style="vertical-align:middle;font-weight: bold;">71%</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="card-footer text-center">
+                Overall: 54%
+            </div>
+        </div>
+    </div>        
+
+
+
+        
+        <div class="col-lg-4">
+            <div style="height:20%; font-family:impact;"><h3>Overall Rating</h3></div>
+<div class="t-speedometer wrapper" style="height:80%; width:100%; vertical-align:middle;">
+<div style="height:50%">
+<canvas id="gauge_rating"></canvas>
+
+</div>
+</div>
+<div id="gauge1-txt" class="wrapper" style="width:100%; vertical-align:middle;font-family:impact; font-size:60px; font-weight: bold;"></div>
+<!--<div id="gauge1-txt" style="font-family:impact; font-size:60px; font-weight: bold;"></div>-->
+
+
+</div>
+        
+        
+    </div>
+    
+    
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block footerScriptsBottom %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+<script>
+    // Bootstrap 4 + MDB + typeahead label fix
+//Add class typeahead to your text input invoking typeahead
+$('.typeahead').on('focus', function() {
+    $(this).parent().siblings().addClass('active');
+}).on('blur', function() {
+    if (!$(this).val()) {
+        $(this).parent().siblings().removeClass('active');
+    }
+});
+
+var states = {{ currencynames_list|safe }}
+// ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California'] EXAMPLE LIST
+
+//bloodhound demo
+//documentation : https://github.com/corejavascript/typeahead.js/blob/master/doc/bloodhound.md
+var states = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.whitespace,
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    // `states` is an array of state names defined in "The Basics"
+    local: states
+});
+
+//Documentation : https://github.com/corejavascript/typeahead.js/blob/master/doc/jquery_typeahead.md
+$('#the-basics .typeahead').typeahead({
+    highlight: true,
+    hint: true,
+    minLength: 3
+}, {
+    name: 'states',
+    source: states,
+    limit: 10
+});
+
+</script>
+
+
+
+<script src="https://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
+<script>
+    var opts = {
+  angle: -0.4,
+  lineWidth: 0.1,
+  limitMax: 'true', 
+  strokeColor: 'red',
+  radiusScale: 1,
+  generateGradient: true,
+    pointer: {
+    length: 1, // // Relative to gauge radius
+    strokeWidth: 0.03, // The thickness
+    color: 'orange' // Fill color
+  },
+//   staticLabels: {
+//   font: "90% sans-serif",  // Specifies font
+//   labels: [0, 20, 40, 60, 80, 100],  // Print labels at these values
+//   color: "black",  // Optional: Label text color
+//   fractionDigits: 2  // Optional: Numerical precision. 0=round off.
+// },
+  // just experiment with them
+  strokeColor: 'red',   // to see which ones work best for you
+  staticZones: [
+   {strokeStyle: "#cc3232", min: 0, max: 20}, // Red
+   {strokeStyle: "#db7b2b", min: 20, max: 40}, // Orange
+   {strokeStyle: "#e7b416", min: 40, max: 60}, // Yellow
+   {strokeStyle: "#99c140", min: 60, max: 80}, // Lt green
+   {strokeStyle: "#2dc937", min: 80, max: 100}, // Green
+],
+  generateGradient: true
+};
+var target = document.getElementById('gauge_rating'); // your canvas element
+var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+gauge.maxValue = 100; // set max gauge value
+gauge.animationSpeed = 32; // set animation speed (32 is default value)
+var x = 4;
+setInterval(gauge.set(x + 3),500);
+var target = document.getElementById('gauge_rating'); // your canvas element
+gauge.set(0);
+
+// randomly change value
+var randomize = function(){
+  gauge.set(Math.floor(Math.random() * (100 - 1))); 
+};
+// setTimeout(function(){ setInterval(randomize, 5000); }, 1000);
+gauge.setTextField(document.getElementById("gauge1-txt"));
+gauge.set(57); // set actual value
+
+    
+</script>
+
+
+
+
+
+{% endblock %}

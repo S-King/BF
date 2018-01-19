@@ -141,3 +141,93 @@ WARNING:root:Index visited by IP: 10.240.0.185
 WARNING:root:Index visited by IP: 10.240.0.185
 WARNING:root:Index visited by IP: 10.240.0.185
 WARNING:root:Index visited by IP: 10.240.1.30
+WARNING:root:Index visited by IP: 10.240.1.31
+WARNING:root:Index visited by IP: 10.240.0.238
+WARNING:root:Index visited by IP: 10.240.1.133
+WARNING:root:Index visited by IP: 10.240.1.78
+WARNING:root:Index visited by IP: 10.240.1.78
+WARNING:root:Index visited by IP: 10.240.1.134
+WARNING:root:Index visited by IP: 10.240.1.32
+WARNING:root:Index visited by IP: 10.240.0.231
+WARNING:root:Index visited by IP: 10.240.1.192
+INFO:werkzeug:10.240.1.31 - - [12/Jan/2018 23:00:30] "GET /favicon.ico HTTP/1.1" 404 -
+WARNING:root:Index visited by IP: 10.240.0.185
+WARNING:root:Index visited by IP: 10.240.1.32
+WARNING:root:Index visited by IP: 10.240.1.191
+ERROR:apscheduler.executors.default:Job "<lambda> (trigger: cron[year='*', month='*', day='*', week='*', day_of_week='*', hour='*', minute='32', second='5'], next run at: 2018-01-16 17:32:05 UTC)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/ubuntu/workspace/Blockfund_test/Application/application.py", line 275, in <lambda>
+    func=lambda: syncMarkets(),      # Must use lambda to pass function referencewith parameters otherwise function fires on app start
+  File "/home/ubuntu/workspace/Blockfund_test/Application/cryptocompare_helpers.py", line 234, in syncMarkets
+    db = MySQLdb.connect(host = '127.0.0.1', user = 'blockroot', passwd = 'pass', db = 'Blockfund',  local_infile = 1)
+  File "/usr/local/lib/python3.6/site-packages/MySQLdb/__init__.py", line 86, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/MySQLdb/connections.py", line 204, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+_mysql_exceptions.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (111)")
+ERROR:apscheduler.executors.default:Job "<lambda> (trigger: cron[year='*', month='*', day='*', week='*', day_of_week='*', hour='*', minute='15', second='5'], next run at: 2018-01-16 18:15:05 UTC)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/ubuntu/workspace/Blockfund_test/Application/application.py", line 280, in <lambda>
+    func=lambda: syncNews(),      # Update news articles shown
+  File "/home/ubuntu/workspace/Blockfund_test/Application/rss_helpers.py", line 19, in syncNews
+    db = MySQLdb.connect(host = '127.0.0.1', user = 'blockroot', passwd = 'pass', db = 'Blockfund',  local_infile = 1)
+  File "/usr/local/lib/python3.6/site-packages/MySQLdb/__init__.py", line 86, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/MySQLdb/connections.py", line 204, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+_mysql_exceptions.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (111)")
+ERROR:apscheduler.executors.default:Job "<lambda> (trigger: cron[year='*', month='*', day='*', week='*', day_of_week='*', hour='*', minute='32', second='5'], next run at: 2018-01-16 18:32:05 UTC)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/ubuntu/workspace/Blockfund_test/Application/application.py", line 275, in <lambda>
+    func=lambda: syncMarkets(),      # Must use lambda to pass function referencewith parameters otherwise function fires on app start
+  File "/home/ubuntu/workspace/Blockfund_test/Application/cryptocompare_helpers.py", line 234, in syncMarkets
+    db = MySQLdb.connect(host = '127.0.0.1', user = 'blockroot', passwd = 'pass', db = 'Blockfund',  local_infile = 1)
+  File "/usr/local/lib/python3.6/site-packages/MySQLdb/__init__.py", line 86, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/MySQLdb/connections.py", line 204, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+_mysql_exceptions.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (111)")
+WARNING:root:Index visited by IP: 10.240.0.185
+WARNING:root:Index visited by IP: 10.240.0.41
+WARNING:root:Index visited by IP: 10.240.1.192
+WARNING:root:Index visited by IP: 10.240.1.30
+WARNING:root:Index visited by IP: 10.240.0.185
+WARNING:root:Index visited by IP: 10.240.0.41
+WARNING:root:Index visited by IP: 10.240.1.30
+WARNING:root:Index visited by IP: 10.240.0.41
+WARNING:root:Index visited by IP: 10.240.1.44
+WARNING:root:Index visited by IP: 10.240.0.187
+WARNING:root:Index visited by IP: 10.240.1.134
+WARNING:root:Index visited by IP: 10.240.1.134
+WARNING:root:Index visited by IP: 10.240.1.44
+WARNING:root:Index visited by IP: 10.240.0.185
+WARNING:root:Index visited by IP: 10.240.0.234
+WARNING:root:Index visited by IP: 10.240.0.231
+WARNING:root:Index visited by IP: 10.240.1.191
+WARNING:root:Index visited by IP: 10.240.0.187
+WARNING:root:Index visited by IP: 10.240.0.238
+WARNING:root:Index visited by IP: 10.240.0.187
+INFO:werkzeug:10.240.0.234 - - [17/Jan/2018 04:33:08] "GET /favicon.ico HTTP/1.1" 404 -
+WARNING:root:Index visited by IP: 10.240.0.234
+WARNING:root:Index visited by IP: 10.240.0.187
+WARNING:root:Index visited by IP: 10.240.0.185
+WARNING:root:Index visited by IP: 10.240.0.41
+WARNING:root:Index visited by IP: 10.240.0.185
+ERROR:apscheduler.executors.default:Job "<lambda> (trigger: cron[year='*', month='*', day='*', week='*', day_of_week='*', hour='*', minute='15', second='5'], next run at: 2018-01-17 15:15:05 UTC)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/ubuntu/workspace/Blockfund_test/Application/application.py", line 280, in <lambda>
+    func=lambda: syncNews(),      # Update news articles shown
+  File "/home/ubuntu/workspace/Blockfund_test/Application/rss_helpers.py", line 14, in syncNews
+    data = [0, str(article['title']), str(article['link']), datetime.datetime.strptime(article['published'], "%a, %d %b %Y %H:%M:%S %z"), datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")]
+  File "/usr/local/lib/python3.6/site-packages/feedparser.py", line 356, in __getitem__
+    return dict.__getitem__(self, key)
+KeyError: 'published'
+WARNING:root:Index visited by IP: 10.240.0.41

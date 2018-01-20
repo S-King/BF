@@ -1,0 +1,8 @@
+"Losers","1 HOUR","[('SmartCash', 'SMART', Decimal('1.01'), Decimal('10.26'), 55, 60, -5), ('Dent', 'DENT', Decimal('0.05'), Decimal('3.26'), 66, 69, -3), ('Kin', 'KIN', Decimal('0.00'), Decimal('-1.73'), 72, 75, -3), ('Dragonchain', 'DRGN', Decimal('3.05'), Decimal('1.25'), 46, 48, -2), ('DigiByte', 'DGB', Decimal('0.07'), Decimal('0.63'), 50, 52, -2)]"
+"Gainers","1 HOUR","[('Nebulas', 'NAS', Decimal('11.77'), Decimal('-4.81'), 76, 72, 4), ('ZClassic', 'ZCL', Decimal('162.36'), Decimal('-1.46'), 67, 64, 3), ('WAX', 'WAX', Decimal('1.16'), Decimal('-2.24'), 60, 57, 3), ('Bancor', 'BNT', Decimal('7.78'), Decimal('-3.55'), 95, 92, 3), ('TenX', 'PAY', Decimal('2.89'), Decimal('-1.02'), 98, 96, 2)]"
+"Losers","1 DAY","[('Nebulas', 'NAS', Decimal('11.77'), Decimal('-4.81'), 76, 94, -18), ('ChainLink', 'LINK', Decimal('1.04'), Decimal('0.56'), 84, 97, -13), ('MonaCoin', 'MONA', Decimal('8.24'), Decimal('-2.39'), 70, 79, -9), ('Aion', 'AION', Decimal('6.61'), Decimal('0.29'), 64, 71, -7), ('Walton', 'WTC', Decimal('26.81'), Decimal('-2.27'), 51, 57, -6)]"
+"Gainers","1 DAY","[('MediBloc', 'MED', Decimal('0.13'), Decimal('0.16'), 83, 70, 13), ('WAX', 'WAX', Decimal('1.16'), Decimal('-2.24'), 60, 49, 11), ('Cindicator', 'CND', Decimal('0.21'), Decimal('7.82'), 96, 87, 9), ('Nexus', 'NXS', Decimal('6.62'), Decimal('-0.36'), 85, 76, 9), ('Substratum', 'SUB', Decimal('1.41'), Decimal('-0.69'), 94, 88, 6)]"
+"Losers","1 WEEK","[]"
+"Gainers","1 WEEK","[]"
+"Losers","1 MONTH","[]"
+"Gainers","1 MONTH","[]"

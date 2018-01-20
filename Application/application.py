@@ -9,6 +9,7 @@ import pprint # to show full html requests
 import MySQLdb
 import datetime # for database timestamps
 from cryptocompare_helpers import * # Helper functions for cryptocompare
+from coinmarketcap_helpers import *
 from rss_helpers import * # Helper functions for rss feeds
 ###### Set up schedules ######
 import time     # Library for scheduling time based events
@@ -92,11 +93,15 @@ def index():
     # cursor.execute("Select * from btcusd_instantprices order by date desc limit 1;")
     cursor.execute("SELECT (@row_number:=(@row_number + 1)%2) AS newsbucket, Title, CAST(Published AS DATE), URL FROM NewsFeed,(SELECT @row_number:=0) AS t limit 20;") # divide news articles into two bucket, limit 10 articles for each widget
     news = list(cursor.fetchall())
-
+    
+    Gainers_Losers = RetrieveCMCRankingsfromCSV()
+    # print(Gainers_Losers)
     # btc_price = results[0][2]
+    print(news)
     return render_template('index_nwelayout.html', 
         # btcprice='{:,.2f}'.format(btc_price)
-        news_articles = news        
+        news_articles = news,
+        Gainers_Losers = Gainers_Losers
         )
 
 
@@ -271,10 +276,7 @@ scheduler.start()
 #     trigger='cron',
 #     year='*', month='*', day="*", week='*', day_of_week='*', hour='*', minute="*", second="*/30");
     
-scheduler.add_job(          
-    func=lambda: syncMarkets(),      # Must use lambda to pass function referencewith parameters otherwise function fires on app start
-    trigger='cron',
-    year='*', month='*', day="*", week='*', day_of_week='*', hour='*', minute="32", second="5");    
+  
   
 scheduler.add_job(          
     func=lambda: syncNews(),      # Update news articles shown
@@ -282,8 +284,19 @@ scheduler.add_job(
     year='*', month='*', day="*", week='*', day_of_week='*', hour='*', minute="15", second="5");   
   
     
+scheduler.add_job(  # Load the top 100 coins hourly so we can determine their change in rank over time
+    func=lambda: LoadCMCHourly(),      # Must use lambda to pass function referencewith parameters otherwise function fires on app start
+    trigger='cron',
+    year='*', month='*', day="*", week='*', day_of_week='*', hour='*', minute="32", second="5");      
+    
 # Shut down the scheduler when exiting the app
 atexit.register(lambda: scheduler.shutdown())
+
+
+# scheduler.add_job(  # Was using this to fetch all data from cryptocompare then rank them but coinmarketcap has them already ranked so don't need it anymore
+#     func=lambda: syncMarkets(),      # Must use lambda to pass function referencewith parameters otherwise function fires on app start
+#     trigger='cron',
+#     year='*', month='*', day="*", week='*', day_of_week='*', hour='*', minute="32", second="5");  
 
 # Example scheduler for timed tasks
 # scheduler = BackgroundScheduler()

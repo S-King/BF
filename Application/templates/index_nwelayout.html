@@ -473,9 +473,195 @@ data-control-prev="<span class='pg-arrow_left_line_alt'></span>">
 <!--BUILDING v2 down here-->
 <div class="row">
     <div class="col-md-6 row1_widgets" style="background-color:red;"></div>
-    <div class="col-md-6 row1_widgets" style="background-color:blue;"></div>
+    <div class="col-md-6 row1_widgets" style="background-color:blue;">
+             <style>
+        .rating_navbar {
+            /*Turn off some of the bootstrap defaults*/
+             /*background-color:red !important;*/
+             border-top: 0px !important;
+             border-left: 0px !important;
+             border-right: 0px !important;
+             border-top-right-radius: 0px !important; 
+             border-top-left-radius: 0px !important;
+             /*background-color:#626262 !important;*/
+        }
+        .rating_navbar > a.active  {
+            background-color:#e6e6e6 !important;
+        }
+        .tabcontent_gainloss {
+            margin: 0 0 0 0;
+            padding:0 !important;
+        }
+        
+        .table_gainloss {
+            margin-top:0;
+            margin-bottom:5px;
+        }
+
+
+
+    </style>
+    
+    <script>
+    
+    // needs to add or remove class active and change attribute aria-expanded="true" for active //
+        function showGainLossTable(element) {
+            let intervals = ['Hourly', 'Daily', 'Weekly', 'Monthly']
+            let groups = ['Gainers', 'Losers']
+        
+            console.log(element.name.toString());
+            console.log(groups);
+            if (groups.includes(element.name)) {
+                intervals.forEach( function(interval) {
+                    if (typeof $("#" + interval + "_Tab.active").val() != 'undefined') { // Test to see if which interval is active
+                        console.log(interval + " is active!");
+                        console.log(element.name + " is active!")  ;                      
+                    }
+                })
+                
+            } else
+                groups.forEach( function(group) {
+                    if (typeof $("#" + group + "_Tab.active").val() != 'undefined') { // Test to see if which group is active
+                        console.log(group + " is active!");
+                        console.log(element.name + " is active!")   ;     
+                    }
+                })
+        
+        }     
+    </script>
+    
+    
+<!-- Nav tabs -->
+<ul class="nav nav-tabs tabcontent_gainloss" role="tablist">
+  <li class="nav-item rating_navbar" style="width:50%;">
+    <!--<a id="Gainers_Tab" class="nav-link active rating_navbar" data-toggle="tab" href="#GAINERS" role="tab">Gainers</a>-->
+    <a id="Gainers_Tab" class="nav-link active rating_navbar" name="Gainers" data-toggle="tab" href="#GAINERS" onclick="showGainLossTable(this)" role="tab">Gainers</a>
+    
+    
+  </li>
+  <li class="nav-item rating_navbar" style="width:50%;">
+    <a id="Losers_Tab"  class="nav-link rating_navbar" data-toggle="tab" href="#LOSERS" role="tab">Losers</a>
+  </li>
+</ul>
+
+
+
+<!-- Tab panes -->
+<div class="tab-content tabcontent_gainloss">
+  <div class="tab-pane active" id="GAINERS" role="tabpanel" style="background-color:grey;">
+<table class="table table-condensed table-hover table_gainloss">
+        <thead>
+        <tr>
+            <th width="40%">Name</th>
+            <th width="20%">Price</th>
+            <th width="20%">% Change</th>
+            <th width="20%">Rank Change</th>
+        </tr>
+    </thead>
+    
+<tbody>
+<!--{% for rank_type, rank_list in rankings %}-->
+<!--    {% if rank_type == "Gainers" %}-->
+<!--        {% for name, symbol, current_price, percentchange1hr, current_rank, previous_rank, rank_change in rank_list %}-->
+<!--            <tr>-->
+<!--                <td colspan="1" style="width:40%"><span class="hidden-sm-down font-montserrat all-caps fs-12"> {{ name }}&nbsp;({{ symbol }})</span>-->
+<!--                <span class="hidden-md-up font-montserrat all-caps fs-12">{{ symbol }}</span>-->
+                
+<!--                </td>-->
+                
+<!--                <td colspan="1" style="width:20%"><span class="font-montserrat fs-18">${{ current_price }}</span></td>-->
+<!--                <td colspan="1" style="width:20%"><span class="font-montserrat fs-18">{{ percentchange1hr }}%</span></td>-->
+<!--                <td colspan="1" style="width:20%"><span class="font-montserrat fs-18">{{ rank_change }}&nbsp;<i class="fa fa-angle-up fs-16"></i></span></td>-->
+<!--            </tr>-->
+<!--        {% endfor %}-->
+<!--    {% endif %}-->
+<!--{% endfor %}-->
+
+{% for grouping_list in Gainers_Losers %}
+    {% if grouping_list['Group'] == "Gainers" and grouping_list['Interval'] == "1 HOUR" %}
+            {% for name, symbol, current_price, percentchange1hr, current_rank, previous_rank, rank_change in grouping_list['TableData'] %}
+                <tr>
+                    <td colspan="1" style="width:40%"><span class="hidden-sm-down font-montserrat all-caps fs-12"> {{ name }}&nbsp;({{ symbol }})</span>
+                    <span class="hidden-md-up font-montserrat all-caps fs-12">{{ symbol }}</span>
+                    
+                    </td>
+                    
+                    <td colspan="1" style="width:20%"><span class="font-montserrat fs-18">${{ current_price }}</span></td>
+                    <td colspan="1" style="width:20%"><span class="font-montserrat fs-18">{{ percentchange1hr }}%</span></td>
+                    <td colspan="1" style="width:20%"><span class="font-montserrat fs-18">{{ rank_change }}&nbsp;<i class="fa fa-angle-up fs-16"></i></span></td>
+                </tr>
+            {% endfor %}
+    {% endif %}
+{% endfor %}
+
+
+
+</tbody>
+</table>
+      
+      
+  </div>
+  <div class="tab-pane" id="LOSERS" role="tabpanel" style="background-color:yellow;">
+<table class="table table-condensed table-hover table_gainloss">
+            <thead>
+        <tr>
+            <th width="40%">Name</th>
+            <th width="20%">Price</th>
+            <th width="20%">% Change</th>
+            <th width="20%">Rank Change</th>
+        </tr>
+    </thead>
+<tbody>
+
+{% for grouping_list in Gainers_Losers %}
+    {% if grouping_list['Group'] == "Losers" and grouping_list['Interval'] == "1 HOUR" %}
+            {% for name, symbol, current_price, percentchange1hr, current_rank, previous_rank, rank_change in grouping_list['TableData'] %}
+                <tr>
+                    <td colspan="1" style="width:40%"><span class="hidden-sm-down font-montserrat all-caps fs-12"> {{ name }}&nbsp;({{ symbol }})</span>
+                    <span class="hidden-md-up font-montserrat all-caps fs-12">{{ symbol }}</span>
+                    
+                    </td>
+                    
+                    <td colspan="1" style="width:20%"><span class="font-montserrat fs-18">${{ current_price }}</span></td>
+                    <td colspan="1" style="width:20%"><span class="font-montserrat fs-18">{{ percentchange1hr }}%</span></td>
+                    <td colspan="1" style="width:20%"><span class="font-montserrat fs-18">{{ rank_change }}&nbsp;<i class="fa fa-angle-up fs-16"></i></span></td>
+                </tr>
+            {% endfor %}
+    {% endif %}
+{% endfor %}
+
+</tbody>
+</table>
+      
+  </div>
 </div>
 
+
+<ul class="nav nav-tabs tabcontent_gainloss" role="tablist">
+  <li class="nav-item rating_navbar" style="width:25%;">
+    <a id="Hourly_Tab" class="nav-link rating_navbar" data-toggle="tab" href="#Hourly" role="tab">Hourly</a>
+  </li>    
+  <li class="nav-item rating_navbar" style="width:25%;">
+    <a id="Daily_Tab" class="nav-link active rating_navbar" data-toggle="tab" href="#Daily" role="tab">Daily</a>
+  </li>
+  <li class="nav-item rating_navbar" style="width:25%;">
+    <a id="Weekly_Tab" class="nav-link rating_navbar" data-toggle="tab" href="#Weekly" role="tab">Weekly</a>
+  </li>
+  <li  class="nav-item rating_navbar" style="width:25%;">
+    <a id="Monthly_Tab" class="nav-link rating_navbar" data-toggle="tab" href="#Monthly" role="tab">Monthly</a>
+  </li>
+
+</ul>
+
+
+
+
+
+    </div>          
+
+    </div>
+        
+ 
 <div class="row">
     <div class="col-md-6 row2_widgets" style="background-color:green;">
         

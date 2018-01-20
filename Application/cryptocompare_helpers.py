@@ -210,7 +210,7 @@ def syncInstantPrices(cryptolist, currencylist):
         return True        
         
         
-def syncMarkets(): # Fetch top 25
+def syncMarkets(): # Get a list of all possible coins offers by cryptocompare then fetch their data one by one (bc that is the only way to get detailed data for all)
     print("Beginning marketcap sync")
     orderedCoinList = []
     full_list = cryptocompare.get_coin_list()

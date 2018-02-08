@@ -328,3 +328,23 @@ WARNING:root:Index visited by IP: 10.240.0.68
 WARNING:root:Index visited by IP: 10.240.1.67
 WARNING:root:Index visited by IP: 10.240.0.42
 WARNING:root:Index visited by IP: 10.240.1.192
+ERROR:apscheduler.executors.default:Job "<lambda> (trigger: cron[year='*', month='*', day='*', week='*', day_of_week='*', hour='*', minute='15', second='5'], next run at: 2018-01-21 05:15:05 UTC)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/ubuntu/workspace/Blockfund_test/Application/application.py", line 282, in <lambda>
+    func=lambda: syncNews(),      # Update news articles shown
+  File "/home/ubuntu/workspace/Blockfund_test/Application/rss_helpers.py", line 14, in syncNews
+    data = [0, str(article['title']), str(article['link']), datetime.datetime.strptime(article['published'], "%a, %d %b %Y %H:%M:%S %z"), datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")]
+  File "/usr/local/lib/python3.6/site-packages/feedparser.py", line 356, in __getitem__
+    return dict.__getitem__(self, key)
+KeyError: 'published'
+WARNING:root:Index visited by IP: 10.240.1.67
+WARNING:root:Index visited by IP: 10.240.0.238
+WARNING:root:Index visited by IP: 10.240.1.191
+WARNING:root:Index visited by IP: 10.240.0.41
+WARNING:root:Index visited by IP: 10.240.0.68
+WARNING:root:Index visited by IP: 10.240.0.238
+WARNING:root:Index visited by IP: 10.240.0.231
+WARNING:root:Index visited by IP: 10.240.1.134
+WARNING:root:Index visited by IP: 10.240.1.78

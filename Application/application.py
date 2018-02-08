@@ -97,7 +97,7 @@ def index():
     Gainers_Losers = RetrieveCMCRankingsfromCSV()
     # print(Gainers_Losers)
     # btc_price = results[0][2]
-    print(news)
+    # print(news)
     return render_template('index_nwelayout.html', 
         # btcprice='{:,.2f}'.format(btc_price)
         news_articles = news,

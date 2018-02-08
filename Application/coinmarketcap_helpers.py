@@ -69,12 +69,12 @@ def LoadCMCHourly():
         
             for interval in time_intervals:
                 for order in order_types:
-                    LoadRankingSQL = ("Select curr.name, curr.symbol, round(curr.price_usd,2) Current_Price, round(curr.percent_change_1h,2) PercentChange1hr, curr.rank Current_Rank, prev.rank Prev_Rank, curr.rank - prev.rank Rank_Change FROM "
+                    LoadRankingSQL = ("Select curr.name, curr.symbol, round(curr.price_usd,2) Current_Price, round(curr.percent_change_1h,2) PercentChange1hr, curr.rank Current_Rank, prev.rank Prev_Rank, (prev.rank - curr.rank) Rank_Change FROM "
                     "(Select * from ODS.CMC_HourlyTicker where loaddate = (Select max(loaddate) from ODS.CMC_HourlyTicker where loaddate <= "
                     "DATE_SUB(CURRENT_TIMESTAMP,INTERVAL " + interval +"))) prev "
                     "inner join " 
                     "(Select * from ODS.CMC_HourlyTicker where loaddate = (Select max(loaddate) from ODS.CMC_HourlyTicker)) curr "
-                    "on prev.symbol  = curr.symbol order by (curr.rank - prev.rank) " + order['text'] + ", curr.percent_change_1h desc limit 5;")
+                    "on prev.symbol  = curr.symbol order by (prev.rank - curr.rank) " + order['text'] + ", curr.percent_change_1h desc limit 5;")
                     # print(LoadRankingSQL)
                     result_ct = cursor.execute(LoadRankingSQL)
                     results = list(cursor.fetchall())
